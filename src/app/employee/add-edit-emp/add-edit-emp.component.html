@@ -1,0 +1,68 @@
+<div class="d-flex flex-row bd.higlight mb-3">
+  <div class="form-group row" style="width: 60%">
+    <label class="col-sm-2 col-form-label">Employee FirstName</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="employeeFirstName"
+        placeholder="Enter Employee FirstName"
+      />
+    </div>
+
+    <label class="col-sm-2 col-form-label">Employee LastName</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="employeeLastName"
+        placeholder="Enter Employee LastName"
+      />
+    </div>
+
+    <label class="col-sm-2 col-form-label">Employee Age</label>
+    <div class="col-sm-10">
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="employeeAge"
+        placeholder="Enter Employee Age"
+      />
+    </div>
+
+    <label class="col-sm-2 col-form-label">Department</label>
+    <div class="col-sm-10">
+      <select class="form-control" [(ngModel)]="department">
+        <option>--Select--</option>
+        <option *ngFor="let depName of departmentList">
+          {{ depName.DepartmentName }}
+        </option>
+      </select>
+    </div>
+
+    <label class="col-sm-2 col-form-label">DateOfJoining</label>
+    <div class="col-sm-10">
+      <input type="date" [(ngModel)]="dateOfJoining" />
+    </div>
+  </div>
+  <div class="ml-3 bd-higlight" style="width: 40%">
+    <img [src]="photoFilePath" height="250px;" width="200px;" />
+    <input type="file" (change)="uploadPhoto($event)" class="mt-2" />
+  </div>
+</div>
+
+<button
+  (click)="addEmployee()"
+  *ngIf="emp.EmployeeId == 0"
+  class="btn btn-primary"
+>
+  Add
+</button>
+
+<button
+  (click)="updateEmployee()"
+  *ngIf="emp.EmployeeId != 0"
+  class="btn btn-primary"
+>
+  Update
+</button>
